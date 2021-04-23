@@ -8,6 +8,8 @@ const hbs = require('hbs');
 const mongoose = require('mongoose');
 const logger = require('morgan');
 const path = require('path');
+const session = require('express-session');
+const MongoStore = require('connect-mongo')(session)
 
 
 mongoose
@@ -33,6 +35,22 @@ app.use(bodyParser.urlencoded({
   extended: false
 }));
 app.use(cookieParser());
+
+
+//Express session setup
+app.use(session({
+  secret: process.env.SESSION_SECRET,
+  cookie: {
+    sameSite: true,
+    httpOnly: true,
+    maxAge: 60000 // ms = 1min
+  },
+  rolling: true,
+  store: new MongoStore({
+    mongooseConnection: mongoose.connection,
+    ttl: 86400 // mins = 24hrs
+  })
+}))
 
 // Express View engine setup
 

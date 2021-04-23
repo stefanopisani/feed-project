@@ -5,11 +5,23 @@
     <input type="text">
     <button type="submit">Search</button>
   </form>
+  {{#if user}}
+  <h2> Welcome {{user.username}}</h2>
       <form action="/add-recipe" method="GET">
         <button>Add Recipe</button>  
       </form>
+      <form action="/logout" method="POST">
+        <button type="submit">
+          Logout
+        </button>
+      </form>
+ 
 </div>
+{{else}}
+
 <a href="/login">Login</a> | <a href="/signup">Register</a>
+
+{{/if}}
   <hr>
 
   {{#each recipesFromDB}}
@@ -19,7 +31,7 @@
     </h3>
         <img src="{{imageUrl}}" alt="" style="height: 200px; width: 200px;">
         <p>{{description}}</p>
-        <p>posted by: {{user}}</p>
+        <p>posted by: {{user.username}}</p>
       <form action="/recipe-details/{{id}}" method="GET">
       <button type="submit">
         Recipe Details

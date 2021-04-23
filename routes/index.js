@@ -8,9 +8,10 @@ const Recipe = require('../models/Recipe.model');
 // });
 
 router.get('/', async (req, res) => {
-  let recipesFromDB = await Recipe.find();
+  let recipesFromDB = await Recipe.find().populate('user');
   res.render('index', {
-    recipesFromDB
+    recipesFromDB,
+    user: req.session.currentUser
   });
 });
 
