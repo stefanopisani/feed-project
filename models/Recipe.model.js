@@ -7,13 +7,13 @@ const {
 const recipeSchema = new Schema({
   title: String,
   description: String,
-  user: {
-    type: Schema.Types.ObjectId,
-    ref: 'User' // relates to the Author model
-  },
+  // user: {
+  //   type: Schema.Types.ObjectId,
+  //   ref: 'User' // relates to the Author model
+  // },
   imageUrl: String
 }, {
   timestamps: true
 });
 
-module.exports = model('Recipe', bookSchema);
+module.exports = model('Recipe', recipeSchema);
