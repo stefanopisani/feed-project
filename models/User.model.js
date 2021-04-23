@@ -16,15 +16,7 @@ const userSchema = new Schema({
   password: {
     type: String,
     required: true
-<<<<<<< HEAD
-    }
-  });
-
-module.exports = model('User', userSchema);
-
-=======
   }
 });
 
 module.exports = model('User', userSchema);
->>>>>>> e63cf323ecff6033ce1f7646f5b9f3138fdcf259
