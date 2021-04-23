@@ -1,2 +1,19 @@
-<h1>{{title}}</h1>
-<p>Welcome to {{title}}</p>
+<h1>Home Feed</h1>
+<hr>
+<div>
+  {{#each recipesFromDB}}
+    <h3>
+      {{title}}
+    </h3>
+        
+        <p>{{description}}</p>
+        <p>posted by: {{user}}</p>
+    <form action="/recipe-details/{{id}}" method="GET">
+      <button type="submit">
+        Recipe Details
+        </button>
+      </form>
+  {{/each}}
+</div>
+
+<hr>

@@ -7,7 +7,8 @@ const {
 const recipeSchema = new Schema({
   title: String,
   description: String,
-  // user: {
+  user: String,
+  // {
   //   type: Schema.Types.ObjectId,
   //   ref: 'User' // relates to the Author model
   // },
