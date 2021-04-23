@@ -1,19 +1,30 @@
-<h1>Home Feed</h1>
-<hr>
-<div>
+<h1>Home Feed</h1> 
+
+<div class="nav-bar">
+  <form action="/search">
+    <input type="text">
+    <button type="submit">Search</button>
+  </form>
+      <form action="/add-recipe" method="GET">
+        <button>Add Recipe</button>  
+      </form>
+</div>
+<a href="/login">Login</a> | <a href="/signup">Register</a>
+  <hr>
+
   {{#each recipesFromDB}}
+<div class="recipe-post">
     <h3>
       {{title}}
     </h3>
-        
         <p>{{description}}</p>
-        <p>posted by: {{user}}</p>
+        <p>posted by: <a href="/profile/{{id}}">{{user}}</a>
     <form action="/recipe-details/{{id}}" method="GET">
       <button type="submit">
         Recipe Details
         </button>
       </form>
-  {{/each}}
 </div>
-
+  {{/each}}
+<br>
 <hr>
