@@ -7,11 +7,11 @@ const {
 const recipeSchema = new Schema({
   title: String,
   description: String,
-  user: String,
-  // {
-  //   type: Schema.Types.ObjectId,
-  //   ref: 'User' // relates to the Author model
-  // },
+  user: //String,
+  {
+    type: Schema.Types.ObjectId,
+    ref: 'User' // relates to the Author model
+  },
   imageUrl: String
 }, {
   timestamps: true
