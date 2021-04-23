@@ -1,0 +1,16 @@
+<h1>Edit {{recipe.title}}</h1>
+
+<form action="/edit-recipe" method="POST" enctype="multipart/form-data">
+
+  <label for="">Title</label>
+  <input type="text" name="title">
+
+  <label for=""> Description </label>
+  <textarea name="description" cols="30" rows="5"></textarea>
+
+  <label for=""> Image </label>
+  <input type="file" name="image">
+
+  <button type="submit"> Create </button>
+
+</form>
