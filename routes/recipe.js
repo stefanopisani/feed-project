@@ -82,4 +82,17 @@ router.post('/edit-recipe', fileUpload.single('image'), async (req, res) => {
   }
 });
 
+router.get('/profile/:userId', async (req, res) => {
+  try {
+    const user = await User.findById(req.params.userId).populate('recipe');
+    res.render('user-profile', {
+      user
+    });
+  } catch (e) {
+    res.render('error');
+    console.log(`An error occurred ${e}`);
+  }
+});
+
+
 module.exports = router;

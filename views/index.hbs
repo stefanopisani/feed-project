@@ -21,21 +21,22 @@
 
 <a href="/login">Login</a> | <a href="/signup">Register</a>
 
-<<<<<<< HEAD
-=======
 {{/if}}
->>>>>>> 9090b07db6d4b7f4714f43d3c4fe86e810d39719
   <hr>
 
 <div></div>
   {{#each recipesFromDB}}
 <div class="recipe-post">
+
+  <h2> <a href="/profile/{{user.id}}">{{user.username}}</a> </h2>
+
     <h3>
       {{title}}
     </h3>
+
         <img src="{{imageUrl}}" alt="" style="height: 200px; width: 200px;">
         <p>{{description}}</p>
-        <p>posted by: {{user.username}}</p>
+        
       <form action="/recipe-details/{{id}}" method="GET">
       <button type="submit">
         Recipe Details

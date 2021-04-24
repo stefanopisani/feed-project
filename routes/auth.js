@@ -4,6 +4,8 @@ const User = require('../models/User.model');
 const bcrypt = require('bcryptjs');
 const fileUpload = require('../configs/cloudinary');
 
+
+// LOGIN
 router.get('/login', (req, res) => {
   res.render('auth/login');
 });
@@ -46,12 +48,14 @@ router.post('/login', async (req, res) => {
   }
 });
 
+
+// SIGNUP
 router.get('/signup', (req, res) => {
   res.render('auth/signup');
 });
 
-router.post('/signup', async (req, res) => {
-  // const fileOnCloudinary = req.file.path;
+router.post('/signup', fileUpload.single('image'), async (req, res) => {
+  const fileOnCloudinary = req.file.path;
   const {
     username,
     email,
@@ -73,7 +77,7 @@ router.post('/signup', async (req, res) => {
     return;
   }
   //check if user already exists
-  const user = await User.findOne({
+  let user = await User.findOne({
     username: username
   });
   if (user !== null) {
@@ -82,6 +86,16 @@ router.post('/signup', async (req, res) => {
     });
     return;
   }
+  user = await User.findOne({
+    email: email
+  });
+  if (user !== null) {
+    res.render('auth/signup', {
+      errorMessage: 'Email already exists'
+    })
+    return;
+  }
+
   //create the user in the database
   const saltRounds = 10;
   const salt = bcrypt.genSaltSync(saltRounds);
@@ -96,7 +110,7 @@ router.post('/signup', async (req, res) => {
     res.redirect('/');
   } catch (e) {
     res.render('auth/signup', {
-      errorMessage: 'error occured'
+      errorMessage: 'error occured, the image cannnot be added'
     });
     return;
   }
