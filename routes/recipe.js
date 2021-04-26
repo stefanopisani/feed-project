@@ -12,7 +12,8 @@ router.get('/recipe-details/:recipeId', async (req, res) => {
   try {
     const recipe = await Recipe.findById(req.params.recipeId);
     res.render('recipe-details', {
-      recipe
+      recipe,
+      user: req.session.currentUser
     });
   } catch (e) {
     res.render('error');
