@@ -58,6 +58,7 @@ router.post('/signup', fileUpload.single('image'), async (req, res) => {
   const fileOnCloudinary = req.file.path;
   const {
     username,
+    bio,
     email,
     password
   } = req.body;
@@ -103,6 +104,7 @@ router.post('/signup', fileUpload.single('image'), async (req, res) => {
   try {
     await User.create({
       username,
+      bio,
       password: hashedPassword,
       email,
       imageUrl: fileOnCloudinary

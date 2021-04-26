@@ -43,7 +43,7 @@ app.use(session({
   cookie: {
     sameSite: true,
     httpOnly: true,
-    maxAge: 60000 // ms = 1min
+    maxAge: 600000 // ms = 1min
   },
   rolling: true,
   store: new MongoStore({
