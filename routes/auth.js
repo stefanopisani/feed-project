@@ -3,27 +3,22 @@ const router = express.Router();
 const User = require('../models/User.model');
 const bcrypt = require('bcryptjs');
 const fileUpload = require('../configs/cloudinary');
-
-
 // LOGIN
 router.get('/login', (req, res) => {
   res.render('auth/login');
 });
-
 router.post('/login', async (req, res) => {
   const {
     username,
     password
   } = req.body;
-  console.log(req.body);
   //check if empty
   if (username === '' || password === '') {
     res.render('auth/login', {
       errorMessage: 'Indicate username and password'
-    })
+    });
     return;
   }
-
   //check if user exists
   const currentUser = await User.findOne({
     username: username
@@ -38,7 +33,6 @@ router.post('/login', async (req, res) => {
   if (bcrypt.compareSync(password, currentUser.password)) {
     req.session.currentUser = currentUser;
     res.redirect('/');
-
   } else {
     //pass doesnt match
     res.render('auth/login', {
@@ -47,13 +41,10 @@ router.post('/login', async (req, res) => {
     return;
   }
 });
-
-
 // SIGNUP
 router.get('/signup', (req, res) => {
   res.render('auth/signup');
 });
-
 router.post('/signup', fileUpload.single('image'), async (req, res) => {
   const fileOnCloudinary = req.file.path;
   const {
@@ -96,7 +87,6 @@ router.post('/signup', fileUpload.single('image'), async (req, res) => {
     })
     return;
   }
-
   //create the user in the database
   const saltRounds = 10;
   const salt = bcrypt.genSaltSync(saltRounds);
@@ -122,5 +112,4 @@ router.post('/logout', (req, res) => {
   req.session.destroy();
   res.redirect('/');
 });
-
-module.exports = router;
+module.exports = router; 

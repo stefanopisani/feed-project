@@ -3,5 +3,8 @@
 <p> {{recipe.description}} </p>
 <img src="{{recipe.imageUrl}}" alt="">
 
-<a href="/edit-recipe">edit your recipe</a>
+{{#if recipe.user}}
+<a href="/edit-recipe/{{recipe.id}}">edit your recipe</a>
+{{/if}}
+
 <a href="/share">share</a>
