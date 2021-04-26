@@ -4,8 +4,6 @@ const Recipe = require('../models/Recipe.model');
 const fileUpload = require('../configs/cloudinary');
 const User = require('../models/User.model');
 
-
-
 //go to user profile 
 
 router.get('/recipe-details/:recipeId', async (req, res) => {
