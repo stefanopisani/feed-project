@@ -4,6 +4,8 @@ const Recipe = require('../models/Recipe.model');
 const fileUpload = require('../configs/cloudinary');
 const User = require('../models/User.model');
 
+
+
 //go to user profile 
 
 router.get('/recipe-details/:recipeId', async (req, res) => {
@@ -54,9 +56,11 @@ router.post('/add-recipe', fileUpload.single('image'), async (req, res) => {
 
 router.get('/edit-recipe/:recipeId', async (req, res) => {
   try {
-    const recipe = await Recipe.findById(req.params.recipeId);
-    res.render('edit-recipe', {
-      recipe
+    const currentUserId = req.session.currentUser._id;
+    const user = await User.findById(currentUserId);
+    res.render('recipe-details', {
+      recipe,
+      user
     });
   } catch (e) {
     res.render('error');
@@ -70,6 +74,18 @@ router.get('/edit-recipe/:recipeId', async (req, res) => {
 //     recipe
 //   });
 // });
+//HERE
+router.get('/edit-recipe/:recipeId', async (req, res) => {
+  try {
+    const recipe = await Recipe.findById(req.params.recipeId);
+    res.render('edit-recipe', {
+      recipe
+    });
+  } catch (e) {
+    res.render('error');
+    console.log(`An error occurred ${e}`);
+  }
+});
 
 router.post('/edit-recipe/:recipeId', fileUpload.single('image'), async (req, res) => {
   try {
@@ -157,6 +173,24 @@ router.post('/profile/edit/:userId', fileUpload.single('image'), async (req, res
   }
 });
 
+// LIKING RECIPE 
+router.post("/recipe/:recipeId/like", async (req, res) => {
+  try {
+    const {
+      likes
+    } = req.body;
+    console.log(req.body);
+    await Recipe.findByIdAndUpdate(req.params.recipeId, {
+      $inc: {
+        'likes': 1
+      }
+    });
+    res.redirect('/');
+  } catch (e) {
+    res.render('error');
+    console.log(`An error occurred ${e}`);
+  }
+});
 
 
 // --------------------

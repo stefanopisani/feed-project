@@ -1,4 +1,5 @@
 const express = require('express');
+const { db } = require('../models/Recipe.model');
 const router = express.Router();
 const Recipe = require('../models/Recipe.model');
 
@@ -14,5 +15,6 @@ router.get('/', async (req, res) => {
     user: req.session.currentUser
   });
 });
+
 
 module.exports = router;

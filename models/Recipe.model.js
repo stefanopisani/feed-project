@@ -15,7 +15,7 @@ const recipeSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'User' // relates to the Author model
   },
-  imageUrl: String
+  imageUrl: String,
 }, {
   timestamps: true
 });
