@@ -135,10 +135,11 @@ router.get('/profile/:userId', async (req, res) => {
 // edit user profile routes 
 router.get('/profile/edit/:userId', async (req, res) => {
   try {
-
+    const currentUserId = req.session.currentUser._id;
     const user = await User.findById(req.params.userId);
     res.render('user-edit', {
-      user
+      user,
+      currentUserId
     });
   } catch (e) {
     res.render('error');
