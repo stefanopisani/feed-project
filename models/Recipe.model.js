@@ -7,14 +7,16 @@ const {
 const recipeSchema = new Schema({
   title: String,
   description: String,
-  likes: Number,
-  user: //String, author of post
+  ingredients: String,
+  difficulty: Number,
+  time: String,
+  user: //String,
   {
     type: Schema.Types.ObjectId,
     ref: 'User' // relates to the Author model
   },
   imageUrl: String,
-},  {
+}, {
   timestamps: true
 });
 
