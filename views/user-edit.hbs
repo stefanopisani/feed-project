@@ -1,0 +1,22 @@
+<h2>Edit your profile</h2>
+<hr>
+<form action="/profile/edit/{{user.id}}" method="POST" enctype="multipart/form-data">
+  <div class="signup-input">
+    <label>Username</label>
+    <input type="text" name="username" value="{{user.username}}" />
+  </div>
+
+  <div class="signup-input">
+    <label>Bio</label>
+    <textarea name="bio" id="" cols="20" rows="5">{{user.bio}}</textarea>
+  </div>
+
+  <label for=""> New Image </label>
+  <input type="file" name="image">
+
+  <button type="submit"> Save </button>
+
+  <br>
+
+  <a href="/profile/{{user.id}}"> <~ Back </a>
+</form>

@@ -97,10 +97,41 @@ router.get('/profile/:userId', async (req, res) => {
   }
 });
 
+// edit user profile routes 
+router.get('/profile/edit/:userId', async (req, res) => {
+  try {
+
+    const user = await User.findById(req.params.userId);
+    res.render('user-edit', {
+      user
+    });
+  } catch (e) {
+    res.render('error');
+    console.log(`An error occurred ${e}`);
+  }
+});
+
+router.post('/profile/edit/:userId', fileUpload.single('image'), async (req, res) => {
+  try {
+
+    const userId = req.params.userId;
+    const username = req.body.username;
+    const bio = req.body.bio;
+
+    await User.findByIdAndUpdate(userId, {
+      username,
+      bio,
+    });
+    res.redirect(`/profile/${userId}`);
+
+  } catch (e) {
+    res.render('error');
+    console.log(`An error occurred ${e}`);
+  }
+});
 
 
-// edit user profile routes
-// router('/profile/edit/:userId')
+
 // --------------------
 
 module.exports = router;

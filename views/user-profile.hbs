@@ -1,5 +1,6 @@
 <h2>{{user.username}}</h2>
 <img src="{{user.imageUrl}}" alt="" style="height: 100px; width:100px;">
+<p> {{user.bio}} </p>
 <hr>
 
 <h3> List of posts</h3>
@@ -12,4 +13,6 @@
 
 {{/each}}
 
-<a href="/profile/edit/:userId"> Edit your profile </a>
+{{#if user}}
+<a href="/profile/edit/{{user.id}}"> Edit your profile </a>
+{{/if}}
