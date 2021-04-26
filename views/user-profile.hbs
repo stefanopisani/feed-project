@@ -1,5 +1,15 @@
 <h2>{{user.username}}</h2>
-<img src="someUrl" alt="">
+<img src="{{user.imageUrl}}" alt="" style="height: 100px; width:100px;">
 <hr>
 
 <h3> List of posts</h3>
+
+{{#each recipes}}
+<h3> {{title}} </h3>
+<p>{{description}}</p>
+<img src="{{imageUrl}}" alt="" style="height: 100px; width:100px;">
+<hr>
+
+{{/each}}
+
+<a href="/profile/edit/:userId"> Edit your profile </a>

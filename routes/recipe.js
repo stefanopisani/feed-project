@@ -84,9 +84,13 @@ router.post('/edit-recipe', fileUpload.single('image'), async (req, res) => {
 
 router.get('/profile/:userId', async (req, res) => {
   try {
-    const user = await User.findById(req.params.userId).populate('recipe');
+    const user = await User.findById(req.params.userId);
+    const recipes = await Recipe.find({
+      user: user
+    });
     res.render('user-profile', {
-      user
+      user,
+      recipes
     });
   } catch (e) {
     res.render('error');
@@ -94,5 +98,8 @@ router.get('/profile/:userId', async (req, res) => {
   }
 });
 
+// edit user profile routes
+// router('/profile/edit/:userId')
+// --------------------
 
 module.exports = router;
