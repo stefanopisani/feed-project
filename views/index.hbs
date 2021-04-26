@@ -42,6 +42,12 @@
         Recipe Details
         </button>
       </form>
+
+      <form action="/{{id}}" method="POST">
+        <button class="like-button" type="submit">LIKE
+        </button>
+      </form>
+      <p>{{likes}}</p>
 </div>
   {{/each}}
 <br>

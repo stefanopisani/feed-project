@@ -65,7 +65,6 @@ router.get('/edit-recipe', async (req, res) => {
 router.post('/edit-recipe', fileUpload.single('image'), async (req, res) => {
   try {
     const fileOnCloudinary = req.file.path; // file path (url) on cloudinary
-
     const {
       title,
       description
@@ -97,6 +96,8 @@ router.get('/profile/:userId', async (req, res) => {
     console.log(`An error occurred ${e}`);
   }
 });
+
+
 
 // edit user profile routes
 // router('/profile/edit/:userId')

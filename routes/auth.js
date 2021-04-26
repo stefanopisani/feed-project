@@ -15,7 +15,7 @@ router.post('/login', async (req, res) => {
     username,
     password
   } = req.body;
-
+  console.log(req.body);
   //check if empty
   if (username === '' || password === '') {
     res.render('auth/login', {
