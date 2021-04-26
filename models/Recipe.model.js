@@ -7,6 +7,9 @@ const {
 const recipeSchema = new Schema({
   title: String,
   description: String,
+  ingredients: String,
+  difficulty: Number,
+  time: String,
   user: //String,
   {
     type: Schema.Types.ObjectId,

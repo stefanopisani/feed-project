@@ -29,11 +29,17 @@ router.post('/add-recipe', fileUpload.single('image'), async (req, res) => {
     const user = await User.findById(currentUserId);
     const {
       title,
-      description
+      ingredients,
+      description,
+      difficulty,
+      time
     } = req.body;
     await Recipe.create({
       title,
+      ingredients,
       description,
+      difficulty,
+      time,
       imageUrl: fileOnCloudinary,
       user
     });
@@ -44,12 +50,12 @@ router.post('/add-recipe', fileUpload.single('image'), async (req, res) => {
   }
 });
 
-//edit recipe
+//EDIT RECIPE
 
-router.get('/recipe-details/:recipeId', async (req, res) => {
+router.get('/edit-recipe/:recipeId', async (req, res) => {
   try {
     const recipe = await Recipe.findById(req.params.recipeId);
-    res.render('recipe-details', {
+    res.render('edit-recipe', {
       recipe
     });
   } catch (e) {
@@ -58,19 +64,22 @@ router.get('/recipe-details/:recipeId', async (req, res) => {
   }
 });
 
-router.get('/edit-recipe', async (req, res) => {
-  res.render('edit-recipe');
-});
+// router.get('/edit-recipe/:recipeId', async (req, res) => {
+//   const recipe = Recipe.findById(req.params.recipeId);
+//   res.render('edit-recipe', {
+//     recipe
+//   });
+// });
 
-router.post('/edit-recipe', fileUpload.single('image'), async (req, res) => {
+router.post('/edit-recipe/:recipeId', fileUpload.single('image'), async (req, res) => {
   try {
     const fileOnCloudinary = req.file.path; // file path (url) on cloudinary
-
+    const recipeId = req.params.recipeId;
     const {
       title,
       description
     } = req.body;
-    await Recipe.findByIdAndUpdate({
+    await Recipe.findByIdAndUpdate(recipeId, {
       title,
       description,
       imageUrl: fileOnCloudinary
@@ -80,6 +89,14 @@ router.post('/edit-recipe', fileUpload.single('image'), async (req, res) => {
     res.render('error');
     console.log(`An error occurred ${e}`);
   }
+});
+
+// DELETE RECIPE
+
+router.post('/delete/:recipeId', async (req, res) => {
+  await Recipe.findByIdAndDelete(req.params.recipeId);
+  res.redirect('/');
+  //maybe we should soft delete??
 });
 
 router.get('/profile/:userId', async (req, res) => {
@@ -119,10 +136,19 @@ router.post('/profile/edit/:userId', fileUpload.single('image'), async (req, res
     const username = req.body.username;
     const bio = req.body.bio;
 
-    await User.findByIdAndUpdate(userId, {
-      username,
-      bio,
-    });
+    if (req.file) {
+      await User.findByIdAndUpdate(userId, {
+        username,
+        bio,
+        imageUrl: req.file.path
+      });
+    } else {
+      await User.findByIdAndUpdate(userId, {
+        username,
+        bio
+      });
+    }
+
     res.redirect(`/profile/${userId}`);
 
   } catch (e) {

@@ -3,10 +3,19 @@
 <form action="/add-recipe" method="POST" enctype="multipart/form-data">
 
 <label for="">Title</label>
-<input type="text" name="title">
+<input type="text" name="title" placeholder="Name of the recipe">
+
+<label for="">Ingredients</label>
+<textarea name="ingredients" cols="30" rows="5" placeholder="ingredients"></textarea>
 
 <label for=""> Description </label>
-<textarea name="description" cols="30" rows="5"></textarea>
+<textarea name="description" cols="30" rows="5" placeholder="Describe the process"></textarea>
+
+<label for="">Difficulty (between 1 and 5) </label>
+<input type="number" name="difficulty" min="1" max="5">
+
+<label for=""> Time </label>
+<input type="time" name="time">
 
 <label for=""> Image </label>
 <input type="file" name="image">

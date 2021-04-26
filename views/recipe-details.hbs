@@ -1,7 +1,21 @@
 <h2> {{recipe.title}} </h2>
 
-<p> {{recipe.description}} </p>
-<img src="{{recipe.imageUrl}}" alt="">
 
-<a href="/edit-recipe">edit your recipe</a>
+<img src="{{recipe.imageUrl}}" alt="" style="height: 200px; width:200px;">
+<h3> Ingredients:</h3>
+<p> {{recipe.ingredients}} </p> <br>
+
+<h3> Description: </h3>
+<p> {{recipe.description}} </p> <br>
+
+<p> Difficulty: {{recipe.difficulty}} </p> <br>
+<p> Time: {{recipe.time}} </p> <br>
+
+
+
+<a href="/edit-recipe/{{recipe.id}}">edit</a>
 <a href="/share">share</a>
+
+<form action="/delete/{{recipe.id}}" method="POST">
+<button type="submit"> Delete </button>
+</form>
