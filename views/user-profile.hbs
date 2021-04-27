@@ -7,12 +7,16 @@
 
 {{#each recipes}}
 <h3> {{title}} </h3>
-<p>{{description}}</p>
-<img src="{{imageUrl}}" alt="" style="height: 100px; width:100px;">
+  <p>{{description}}</p>
+    <img src="{{imageUrl}}" alt="" style="height: 100px; width:100px;">
 <hr>
-
 {{/each}}
 
-{{#if user}}
-<a href="/profile/edit/{{user.id}}"> Edit your profile </a>
-{{/if}}
+<p>user.id: {{user._id}}</p>
+<p>recipie user id : {{recipes.1.user}}</p>
+{{#is user.id recipes.1.user}} 
+{{!-- works when logged in --}}
+  <a href="/profile/edit/{{user.id}}"> Edit your profile </a>
+{{else}}
+<p>this isnt working!</p>
+{{/is}}

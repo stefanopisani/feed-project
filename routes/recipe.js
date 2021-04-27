@@ -10,7 +10,8 @@ router.get('/recipe-details/:recipeId', async (req, res) => {
   try {
     const recipe = await Recipe.findById(req.params.recipeId);
     res.render('recipe-details', {
-      recipe
+      recipe,
+      user: req.session.currentUser
     });
   } catch (e) {
     res.render('error');
@@ -72,7 +73,7 @@ router.get('/edit-recipe/:recipeId', async (req, res) => {
 //     recipe
 //   });
 // });
-//HERE
+
 router.get('/edit-recipe/:recipeId', async (req, res) => {
   try {
     const recipe = await Recipe.findById(req.params.recipeId);
@@ -113,15 +114,19 @@ router.post('/delete/:recipeId', async (req, res) => {
   //maybe we should soft delete??
 });
 
+//HERE!
 router.get('/profile/:userId', async (req, res) => {
   try {
     const user = await User.findById(req.params.userId);
     const recipes = await Recipe.find({
       user: user
     });
+    const currentUser =  await User.findById(req.session.currentUser);
+    console.log(currentUser);
     res.render('user-profile', {
       user,
-      recipes
+      recipes,
+      currentUser
     });
   } catch (e) {
     res.render('error');

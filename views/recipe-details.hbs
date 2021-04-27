@@ -11,13 +11,15 @@
 <p> Difficulty: {{recipe.difficulty}} </p> <br>
 <p> Time: {{recipe.time}} </p> <br>
 
-
-
-{{#if user}}
-<a href="/edit-recipe/{{recipe.id}}">edit your recipe</a>
-{{/if}}
+<p>user:{{user._id}}</p>
+<p>recipe:{{recipe.user}}</p>
+{{#is user._id recipe.user}}
+  <a href="/edit-recipe/{{recipe.id}}">edit</a>
+  <form action="/delete/{{recipe.id}}" method="POST">
+    <button type="submit"> Delete </button>
+  </form>
+{{else}}
+<p>hello</p>
+{{/is}}
 <a href="/share">share</a>
 
-<form action="/delete/{{recipe.id}}" method="POST">
-<button type="submit"> Delete </button>
-</form>
