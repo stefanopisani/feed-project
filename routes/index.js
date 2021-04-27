@@ -12,11 +12,7 @@ const axios = require('axios');
 // });
 
 router.get('/', async (req, res) => {
-<<<<<<< HEAD
   let response = await axios.get(`https://api.spoonacular.com/food/trivia/random?apiKey=${process.env.API_KEY}`);
-=======
-
->>>>>>> c1192aa2425b5a70e44e5923d0c327a18815071b
   let recipesFromDB = await Recipe.find().populate('user');
   res.render('index', {
     recipesFromDB,

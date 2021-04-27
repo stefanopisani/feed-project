@@ -115,14 +115,7 @@ router.post('/delete/:recipeId', async (req, res) => {
   //maybe we should soft delete??
 });
 
-<<<<<<< HEAD
-//HERE!
-=======
-
-
-
 // GO TO USER PROFILE FROM LIST OF RECIPEES
->>>>>>> c1192aa2425b5a70e44e5923d0c327a18815071b
 router.get('/profile/:userId', async (req, res) => {
   try {
     const user = await User.findById(req.params.userId);
