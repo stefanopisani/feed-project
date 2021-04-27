@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Recipe = require('../models/Recipe.model');
+const Favorite = require('../models/Favorite.model');
 const fileUpload = require('../configs/cloudinary');
 const User = require('../models/User.model');
 
@@ -114,20 +115,33 @@ router.post('/delete/:recipeId', async (req, res) => {
   //maybe we should soft delete??
 });
 
+<<<<<<< HEAD
 //HERE!
+=======
+
+
+
+// GO TO USER PROFILE FROM LIST OF RECIPEES
+>>>>>>> c1192aa2425b5a70e44e5923d0c327a18815071b
 router.get('/profile/:userId', async (req, res) => {
   try {
     const user = await User.findById(req.params.userId);
     const recipes = await Recipe.find({
       user: user
     });
-    const currentUser = await User.findById(req.session.currentUser._id);
-    console.log(user, currentUser);
-    res.render('user-profile', {
-      user,
-      recipes,
-      currentUser
-    });
+    if (req.session.currentUser) {
+      const currentUser = await User.findById(req.session.currentUser._id);
+      res.render('user-profile', {
+        user,
+        recipes,
+        currentUser
+      });
+    } else {
+      res.render('user-profile', {
+        user,
+        recipes
+      });
+    }
   } catch (e) {
     res.render('error');
     console.log(`An error occurred ${e}`);
@@ -144,10 +158,11 @@ router.get('/search', async (req, res) => {
       title: {
         $regex: '.*' + search + '.*'
       }
-    });
+    }).populate('user');
     console.log('results', results);
     res.render('results', {
-      results
+      results,
+      user: req.session.currentUser
     });
   } catch (e) {
     res.render('error');
@@ -217,5 +232,45 @@ router.post("/recipe/:recipeId/like", async (req, res) => {
 
 
 // --------------------
+
+// SAVE AS FAVORITE
+
+router.post('/favorites/:recipeId', async (req, res) => {
+  try {
+    Favorite.create({
+      user: req.session.currentUser._id,
+      recipe: req.params.recipeId
+    });
+    res.redirect('/favorites');
+  } catch (e) {
+    res.render('error');
+    console.log(`An error occurred ${e}`);
+  }
+});
+router.get('/favorites', async (req, res) => {
+  try {
+    let favorites = await Favorite.find({
+      user: req.session.currentUser._id
+    }).populate('recipe');
+    console.log(favorites);
+    res.render('favorites', {
+      recipes: favorites
+    });
+  } catch (e) {
+    res.render('error');
+    console.log(`An error occurred ${e}`);
+  }
+});
+
+// Delete from favorites
+
+router.post('/delete-favorite/:recipeId', async (req, res) => {
+  await Favorite.findByIdAndRemove(req.params.recipeId);
+  res.redirect('/favorites');
+  //maybe we should soft delete??
+});
+
+
+// --------
 
 module.exports = router;

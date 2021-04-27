@@ -15,7 +15,13 @@ const helpers = require('handlebars-helpers');
 hbs.registerHelper(helpers());
 
 mongoose
+<<<<<<< HEAD
   .connect(process.env.MONGODB_URI, {useNewUrlParser: true})
+=======
+  .connect(process.env.MONGODB_URI, {
+    useNewUrlParser: true
+  })
+>>>>>>> c1192aa2425b5a70e44e5923d0c327a18815071b
   .then(x => {
     console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
   })
