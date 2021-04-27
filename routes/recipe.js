@@ -5,8 +5,6 @@ const Favorite = require('../models/Favorite.model');
 const fileUpload = require('../configs/cloudinary');
 const User = require('../models/User.model');
 
-
-
 //go to user profile 
 
 router.get('/recipe-details/:recipeId', async (req, res) => {
@@ -76,7 +74,7 @@ router.get('/edit-recipe/:recipeId', async (req, res) => {
 //     recipe
 //   });
 // });
-//HERE
+
 router.get('/edit-recipe/:recipeId', async (req, res) => {
   try {
     const recipe = await Recipe.findById(req.params.recipeId);
@@ -116,9 +114,6 @@ router.post('/delete/:recipeId', async (req, res) => {
   res.redirect('/');
   //maybe we should soft delete??
 });
-
-
-
 
 // GO TO USER PROFILE FROM LIST OF RECIPEES
 router.get('/profile/:userId', async (req, res) => {
