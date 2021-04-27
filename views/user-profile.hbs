@@ -12,11 +12,12 @@
 <hr>
 {{/each}}
 
-<p>user.id: {{user._id}}</p>
-<p>recipie user id : {{recipes.1.user}}</p>
-{{#is user.id recipes.1.user}} 
-{{!-- works when logged in --}}
-  <a href="/profile/edit/{{user.id}}"> Edit your profile </a>
+<p> a. {{user.username}} </p>
+<p> b. {{currentUser.username}} </p>
+
+{{#eq user.username currentUser.username}}
+<a href="/profile/edit/{{user.id}}"> Edit your profile </a>
 {{else}}
-<p>this isnt working!</p>
-{{/is}}
+<p> hello </p>
+{{/eq}}
+

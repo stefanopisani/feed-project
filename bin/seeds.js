@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Recipe = require('../models/Recipe.model');
 const DB_NAME = 'feed-project';
-mongoose.connect(`mongodb://localhost/${DB_NAME}`, {
+mongoose.connect('mongodb+srv://admin:<password>@cluster0.60qzl.mongodb.net/test', {
   useCreateIndex: true,
   useNewUrlParser: true,
   useUnifiedTopology: true
