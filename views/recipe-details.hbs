@@ -18,7 +18,11 @@
 <button type="submit"> Delete </button>
 </form>
 {{/is}}
-<a href="/someURL"> save as favourite </a>
+{{#if user}}
+<form action="/favorites/{{recipe._id}}" method="POST">
+<button type="submit"> Save </button>
+</form>
 <a href="/share"> share </a>
+{{/if}}
 
 

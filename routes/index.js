@@ -1,5 +1,7 @@
 const express = require('express');
-const { db } = require('../models/Recipe.model');
+const {
+  db
+} = require('../models/Recipe.model');
 const router = express.Router();
 const Recipe = require('../models/Recipe.model');
 
@@ -9,6 +11,7 @@ const Recipe = require('../models/Recipe.model');
 // });
 
 router.get('/', async (req, res) => {
+
   let recipesFromDB = await Recipe.find().populate('user');
   res.render('index', {
     recipesFromDB,

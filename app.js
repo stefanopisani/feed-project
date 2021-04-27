@@ -16,7 +16,7 @@ hbs.registerHelper(helpers())
 
 
 mongoose
-  .connect('mongodb://localhost/feed-project', {
+  .connect(process.env.MONGODB_URI, {
     useNewUrlParser: true
   })
   .then(x => {
