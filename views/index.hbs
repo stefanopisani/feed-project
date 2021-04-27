@@ -1,8 +1,8 @@
 <h1>Home Feed</h1> 
 
 <div class="nav-bar">
-  <form action="/search">
-    <input type="text">
+  <form action="/search" method="GET">
+    <input type="text" name="search">
     <button type="submit">Search</button>
   </form>
   {{#if user}}
@@ -43,7 +43,7 @@
         </button>
       </form>
 
-      {{#if user}}
+      {{#if ../user}}
       <form action="/recipe/{{id}}/like" method="POST">
         <button class="like-button" type="submit">LIKE
         </button>

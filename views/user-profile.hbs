@@ -13,9 +13,12 @@
 
 {{/each}}
 
-<p> a. {{user._id}}</p>
-<p> b. {{currentUserId}} </p>
+<p> a. {{user.username}} </p>
+<p> b. {{currentUser.username}} </p>
 
-{{!-- {{#is user._id }}
+{{#eq user.username currentUser.username}}
 <a href="/profile/edit/{{user.id}}"> Edit your profile </a>
-{{/is}} --}}
+{{else}}
+<p> hello </p>
+{{/eq}}
+

@@ -122,9 +122,33 @@ router.get('/profile/:userId', async (req, res) => {
     const recipes = await Recipe.find({
       user: user
     });
+    const currentUser = await User.findById(req.session.currentUser._id);
+    console.log(user, currentUser);
     res.render('user-profile', {
       user,
-      recipes
+      recipes,
+      currentUser
+    });
+  } catch (e) {
+    res.render('error');
+    console.log(`An error occurred ${e}`);
+  }
+});
+
+// -- SEARCH FOR RECIPES ---
+
+router.get('/search', async (req, res) => {
+  try {
+    const search = req.query.search;
+    console.log('keyword', search);
+    const results = await Recipe.find({
+      title: {
+        $regex: '.*' + search + '.*'
+      }
+    });
+    console.log('results', results);
+    res.render('results', {
+      results
     });
   } catch (e) {
     res.render('error');
@@ -135,11 +159,9 @@ router.get('/profile/:userId', async (req, res) => {
 // edit user profile routes 
 router.get('/profile/edit/:userId', async (req, res) => {
   try {
-    const currentUserId = req.session.currentUser._id;
     const user = await User.findById(req.params.userId);
     res.render('user-edit', {
-      user,
-      currentUserId
+      user
     });
   } catch (e) {
     res.render('error');
