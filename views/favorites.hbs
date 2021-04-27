@@ -1,6 +1,6 @@
 <h1> Favorites </h1>
 
-{{#each recipes}}
+{{#each favorites}}
 <h2> {{recipe.title}} </h2>
 <img src="{{recipe.imageUrl}}" alt="" style="height: 200px; width:200px;">
 
@@ -13,7 +13,7 @@
         </button>
       </form>
 
-<form action="/delete-favorite/{{recipe.id}}" method="POST">
+<form action="/delete-favorite/{{id}}" method="POST">
 <button type="submit"> Delete </button>
 </form>
 

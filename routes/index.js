@@ -13,7 +13,11 @@ const axios = require('axios');
 
 router.get('/', async (req, res) => {
   let response = await axios.get(`https://api.spoonacular.com/food/trivia/random?apiKey=${process.env.API_KEY}`);
-  let recipesFromDB = await Recipe.find().populate('user');
+  let recipesFromDB = await Recipe.find(null, null, {
+    sort: {
+      createdAt: -1
+    }
+  }).populate('user');
   res.render('index', {
     recipesFromDB,
     user: req.session.currentUser,

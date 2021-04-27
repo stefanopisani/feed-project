@@ -247,7 +247,7 @@ router.get('/favorites', async (req, res) => {
     }).populate('recipe');
     console.log(favorites);
     res.render('favorites', {
-      recipes: favorites
+      favorites
     });
   } catch (e) {
     res.render('error');
@@ -259,7 +259,6 @@ router.get('/favorites', async (req, res) => {
 
 router.post('/delete-favorite/:recipeId', async (req, res) => {
   const toDel = await Favorite.findByIdAndRemove(req.params.recipeId);
-  console.log('deleting:' + toDel);
   res.redirect('/favorites');
 });
 

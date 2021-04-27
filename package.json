@@ -19,6 +19,7 @@
     "express-session": "^1.17.1",
     "handlebars-helpers": "^0.10.0",
     "hbs": "^4.0.1",
+    "html-duration-picker": "^2.2.13",
     "mongoose": "^5.2.10",
     "morgan": "^1.9.0",
     "multer": "^1.4.2",
