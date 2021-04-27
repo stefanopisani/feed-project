@@ -263,9 +263,9 @@ router.get('/favorites', async (req, res) => {
 // Delete from favorites
 
 router.post('/delete-favorite/:recipeId', async (req, res) => {
-  await Favorite.findByIdAndRemove(req.params.recipeId);
+  const toDel = await Favorite.findByIdAndRemove(req.params.recipeId);
+  console.log('deleting:' + toDel);
   res.redirect('/favorites');
-  //maybe we should soft delete??
 });
 
 
