@@ -210,7 +210,6 @@ router.post("/recipe/:recipeId/like", async (req, res) => {
     const {
       likes
     } = req.body;
-    console.log(req.body);
     await Recipe.findByIdAndUpdate(req.params.recipeId, {
       $inc: {
         'likes': 1
