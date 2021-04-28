@@ -1,4 +1,5 @@
 const express = require('express');
+const Like = require('../models/Like.model');
 const {
   db
 } = require('../models/Recipe.model');
@@ -17,7 +18,8 @@ router.get('/', async (req, res) => {
     sort: {
       createdAt: -1
     }
-  }).populate('user');
+  }).populate('user').populate('like');
+
   res.render('index', {
     recipesFromDB,
     user: req.session.currentUser
