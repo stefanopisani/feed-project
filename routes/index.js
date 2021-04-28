@@ -4,7 +4,7 @@ const {
 } = require('../models/Recipe.model');
 const router = express.Router();
 const Recipe = require('../models/Recipe.model');
-const axios = require('axios');
+// const axios = require('axios');
 
 /* GET home page */
 // router.get('/', (req, res, next) => {
@@ -12,7 +12,7 @@ const axios = require('axios');
 // });
 
 router.get('/', async (req, res) => {
-  let response = await axios.get(`https://api.spoonacular.com/food/trivia/random?apiKey=${process.env.API_KEY}`);
+  // let response = await axios.get(`https://api.spoonacular.com/food/trivia/random?apiKey=${process.env.API_KEY}`);
   let recipesFromDB = await Recipe.find(null, null, {
     sort: {
       createdAt: -1
@@ -20,8 +20,8 @@ router.get('/', async (req, res) => {
   }).populate('user');
   res.render('index', {
     recipesFromDB,
-    user: req.session.currentUser,
-    fact: response.data.text
+    user: req.session.currentUser
+    // fact: response.data.text
   });
 });
 
