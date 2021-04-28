@@ -56,9 +56,11 @@ router.post('/add-recipe', fileUpload.single('image'), async (req, res) => {
 
 router.get('/edit-recipe/:recipeId', async (req, res) => {
   try {
+    const recipe = await Recipe.findById(req.params.recipeId);
+    console.log(recipe);
     const currentUserId = req.session.currentUser._id;
     const user = await User.findById(currentUserId);
-    res.render('recipe-details', {
+    res.render('edit-recipe', {
       recipe,
       user
     });
@@ -75,17 +77,17 @@ router.get('/edit-recipe/:recipeId', async (req, res) => {
 //   });
 // });
 
-router.get('/edit-recipe/:recipeId', async (req, res) => {
-  try {
-    const recipe = await Recipe.findById(req.params.recipeId);
-    res.render('edit-recipe', {
-      recipe
-    });
-  } catch (e) {
-    res.render('error');
-    console.log(`An error occurred ${e}`);
-  }
-});
+// router.get('/edit-recipe/:recipeId', async (req, res) => {
+//   try {
+//     const recipe = await Recipe.findById(req.params.recipeId);
+//     res.render('edit-recipe', {
+//       recipe
+//     });
+//   } catch (e) {
+//     res.render('error');
+//     console.log(`An error occurred ${e}`);
+//   }
+// });
 
 router.post('/edit-recipe/:recipeId', fileUpload.single('image'), async (req, res) => {
   try {

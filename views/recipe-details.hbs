@@ -1,28 +1,44 @@
-<h2> {{recipe.title}} </h2>
 
+<div class="container">
+  <div class="row">
+    <div class="col">
 
-<img src="{{recipe.imageUrl}}" alt="" style="height: 200px; width:200px;">
-<h3> Ingredients:</h3>
-<p> {{recipe.ingredients}} </p> <br>
+    </div>
+    <div class="col-6" id="recipe-details-main">
+      <section class="card-template">
+        <h5> {{recipe.title}} </h5>
+        <img class="recipe-details-img" src="{{recipe.imageUrl}}" />
+        <h6> Ingredients:</h6>
+          <p> {{recipe.ingredients}} </p>
 
-<h3> Description: </h3>
-<p> {{recipe.description}} </p> <br>
+        <h6> Description: </h6>
+          <p> {{recipe.description}} </p>
+        <h6> Difficulty: </h6>  
+          <p> {{recipe.difficulty}} </p>
+        <h6> Time </h6>
+          <p> {{recipe.time}} </p>
+      </section>
 
-<p> Difficulty: {{recipe.difficulty}} </p> <br>
-<p> Time: {{recipe.time}} </p> <br>
+      <section id="recipe-details-btns" class="card-template">
+        {{#is user._id recipe.user}}
+          <a href="/edit-recipe/{{recipe.id}}">edit</a>
+          <form action="/delete/{{recipe.id}}" method="POST">
 
+            <button class="btn btn-outline-secondary" type="submit">Delete</button>
 
-{{#is user._id recipe.user}}
-<a href="/edit-recipe/{{recipe.id}}">edit</a>
-<form action="/delete/{{recipe.id}}" method="POST">
-<button type="submit"> Delete </button>
-</form>
-{{/is}}
-{{#if user}}
-<form action="/favorites/{{recipe._id}}" method="POST">
-<button type="submit"> Save </button>
-</form>
-<a href="/share"> share </a>
-{{/if}}
+          </form>
+        {{/is}}
+        {{#if user}}
+          <form action="/favorites/{{recipe._id}}" method="POST">
+            <button type="submit"> Save </button>
+          </form>
+          {{!-- <a href="/share"> share </a> --}}
+        {{/if}}
+      </section>
+  </div>
+<div class="col">
+  </div>
+    </div>
+      </div>
 
   

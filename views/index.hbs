@@ -1,33 +1,32 @@
-<h1>Home Feed</h1> 
-  <p>-- {{fact}}</p>
+<h1>feed</h1> 
+  {{!-- <p>-- {{fact}}</p> --}}
 
-<div class="nav-bar">
+<nav class="navbar navbar-expand-lg">
   <form action="/search" method="GET">
     <input type="text" name="search">
     <button type="submit">Search</button>
   </form>
-{{#if user}}
-  <h2> Welcome {{user.username}}</h2>
-  <a href="/profile/{{user._id}}"> <img src="{{user.imageUrl}}" alt="" style="height: 100px; width:100px; border-radius:50px;"> </a>
-      <form action="/add-recipe" method="GET">
-        <button>Add Recipe</button>  
-      </form>
-      <form action="/logout" method="POST">
-        <button type="submit">
-          Logout
-        </button>
-      </form>
-{{else}}
-<a href="/login">Login</a> | <a href="/signup">Register</a>
-{{/if}}
-</div>
+  {{#if user}}
+    <p> {{user.username}}</p>
+    <a href="/profile/{{user._id}}"> <img src="{{user.imageUrl}}" alt="" style="height: 100px; width:100px; border-radius:50px;"> </a>
+        <form action="/add-recipe" method="GET">
+          <button>Add Recipe</button>  
+        </form>
+        <form action="/logout" method="POST">
+          <button type="submit">
+            Logout
+          </button>
+        </form>
+    {{else}}
+  <a href="/login">Login</a> | <a href="/signup">Register</a>
+  {{/if}}
+</nav>
+
 <hr>
-{{#each recipesFromDB}}
+
+{{!-- {{#each recipesFromDB}}
 <div class="recipe-post">
-
   <h2> <img src="{{user.imageUrl}}" alt="" style="height: 40px; width: 40px; border-radius:50px;"> <a href="/profile/{{user.id}}">{{user.username}}</a> </h2>
-  
-
   <h3>
     {{title}}
   </h3>
@@ -47,11 +46,50 @@
   </form>
   {{/if}}
 
-  <p>{{likes}}</p>
+<p>{{likes}}</p>
 </div>
+{{/each}} --}}
 
-{{/each}}
+<div class="container">
+  <div class="row">
+    <div class="col">
+
+    </div>
+<div class="col-6">
+  {{#each recipesFromDB}}
+    <section class="card-template">
+      <h5 class="recipe-post-title"> {{title}} </h5>
+      <div class="recipe-post-user">
+        <img src="{{user.imageUrl}}" alt="" style="height: 40px; width: 40px; border-radius:50px;"> 
+        <p class="recipe-posted-by">posted by: 
+          <a href="/profile/{{user.id}}">{{user.username}}</a>
+        </p>
+      </div>
+    
+    <div clas="recipe-description">
+      <img class="recipe-post-img" src="{{imageUrl}}" alt="" >
+      <p class="recipe-caption">{{description}}</p>
+    </div>
+    <div class="recipe-post-btn">
+      <form action="/recipe-details/{{id}}" method="GET">
+          <button class="btn btn-outline-secondary" type="submit">Recipe Details</button>
+      </form>
+    {{#if ../user}}
+      <form action="/recipe/{{id}}/like" method="POST">
+        <button class="btn btn-outline-secondary" type="submit"> ❤️ {{likes}}</button>
+      </form>
+    {{/if}}
+    </div>
+    </section>
+  {{/each}} 
+  </div>
+    <div class="col">
+    </div>
+  </div>
+</div>
 <br>
+
+
 <hr>
 <a href="/about">About</a>
 <a href="/random-recipe">Generate Random Recipe</a>

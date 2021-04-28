@@ -1,8 +1,69 @@
 body {
   padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; }
+  font: 12px "Neue Helvetica", Helvetica, Arial, sans-serif;
+  background-color: #d8f1ed; }
 
 a {
-  color: #00B7FF; }
+  color: #9db7c2; }
+
+.card-template {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  border: 0.1rem #f5fdfc solid;
+  margin-bottom: 2rem;
+  border-radius: 1rem;
+  background-color: #ffffff; }
+
+.recipe-post-title {
+  margin-bottom: 1rem; }
+
+.recipe-post-user {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 1rem; }
+
+.recipe-posted-by {
+  margin: 0.5rem; }
+
+.recipe-post-img {
+  max-width: 100%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto; }
+
+.recipe-caption {
+  margin-top: 1rem; }
+
+.recipe-post-btn {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between; }
+
+.btn-outline-secondary {
+  font-size: smaller;
+  background-color: white;
+  border-color: #b5d1cc; }
+
+.col-6 {
+  width: 60%; }
+
+.recipe-details-img {
+  max-width: 90%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 2rem;
+  margin-bottom: 2rem; }
+
+#recipe-details-btns {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between; }
+
+#recipe-details-main {
+  width: 80%; }
+
+/*# sourceMappingURL=style.css.map */
 
 /*# sourceMappingURL=style.css.map */
