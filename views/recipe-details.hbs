@@ -1,4 +1,4 @@
-
+<div class="page-top"> </div>
 <div class="container">
   <div class="row">
     <div class="col">
@@ -8,6 +8,12 @@
       <section class="card-template">
         <h5> {{recipe.title}} </h5>
         <img class="recipe-details-img" src="{{recipe.imageUrl}}" />
+        <section class="recipe-details-foot">
+          {{#is user._id recipe.user}}
+          <a class="link-edit-delete"href="/edit-recipe/{{recipe.id}}">edit</a>
+          <a class="link-edit-delete" href="/delete/{{recipe.id}}">delete</a>
+          {{/is}}
+        </section>
         <h6> Ingredients:</h6>
           <p> {{recipe.ingredients}} </p>
 
@@ -20,20 +26,25 @@
       </section>
 
       <section id="recipe-details-btns" class="card-template">
-        {{#is user._id recipe.user}}
-          <a href="/edit-recipe/{{recipe.id}}">edit</a>
+          <form action="/" method="GET">
+            <button class="btn btn-outline-secondary"><< feed</button>
+          </form>
+        {{!-- {{#is user._id recipe.user}}
+          <form action="/edit-recipe/{{recipe.id}}" method="GET">
+            <button class="btn btn-outline-secondary" type="submit">edit</button>
+          </form>
           <form action="/delete/{{recipe.id}}" method="POST">
-
             <button class="btn btn-outline-secondary" type="submit">Delete</button>
-
           </form>
-        {{/is}}
+        {{/is}} --}}
         {{#if user}}
-          <form action="/favorites/{{recipe._id}}" method="POST">
-            <button type="submit"> Save </button>
-          </form>
-          {{!-- <a href="/share"> share </a> --}}
+        <form action="/favorites/{{recipe._id}}" method="POST">
+          <button class="btn btn-outline-secondary" type="submit">add to favorites</button>
+        </form>
         {{/if}}
+        <form action="/share" method="POST">
+          <button class="btn btn-outline-secondary" type="submit">more >></button>
+        </form>
       </section>
   </div>
 <div class="col">

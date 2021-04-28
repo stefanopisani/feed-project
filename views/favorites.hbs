@@ -1,21 +1,36 @@
-<h1> Favorites </h1>
+<div class="page-top"> </div>
+<div class="container">
+  <div class="row">
+    <div class="col"> </div>
+    <div class="col-6">
+      <section class="card-template">
+          <h3> Favorites </h3>
+          <hr>
+        <section class="favorites-info">
+            {{#each favorites}}
+            <h4> {{recipe.title}} </h4>
 
-{{#each favorites}}
-<h2> {{recipe.title}} </h2>
-<img src="{{recipe.imageUrl}}" alt="" style="height: 200px; width:200px;">
+<section class="user-profile-recipe">
+  <article class="user-profile-text">
+    <h5> Description </h5>
+    <p> {{recipe.description}}</p>
+  </article>
+    <img class="favorites-food-img"src="{{recipe.imageUrl}}">
+</section>
+        <section class="favorites-btns">
 
-<h3> Description:</h3>
-<p> {{recipe.description}}</p>
-
-<form action="/recipe-details/{{recipe.id}}" method="GET">
-      <button type="submit">
-        Recipe Details
-        </button>
-      </form>
-
-<form action="/delete-favorite/{{id}}" method="POST">
-<button type="submit"> Delete </button>
-</form>
-
-<hr>
-{{/each}}
+        <form action="/recipe-details/{{recipe.id}}" method="GET">
+          <button class="btn btn-outline-secondary" type="submit">Recipe Details</button>
+        </form>
+        <form action="/delete-favorite/{{id}}" method="POST">
+          <button class="btn btn-outline-secondary" type="submit"> Delete </button>
+        </form>
+      </section>
+                    <hr>
+          </section>
+            {{/each}}
+    </section>
+</div>
+<div class="col"></div>
+</div>
+</div>

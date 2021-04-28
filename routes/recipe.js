@@ -24,7 +24,7 @@ router.get('/recipe-details/:recipeId', async (req, res) => {
 });
 
 router.get('/add-recipe', async (req, res) => {
-  res.render('add-recipe')
+  res.render('add-recipe');
 });
 
 router.post('/add-recipe', fileUpload.single('image'), async (req, res) => {

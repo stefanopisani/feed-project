@@ -9,7 +9,7 @@ a {
 }
 
 .page-top {
-  margin-bottom: 4.5rem;
+  margin-bottom: 2rem;
 }
 
 .card-template {
@@ -54,7 +54,7 @@ a {
 }
 
 .btn-outline-secondary {
-  font-size: smaller;
+  font-size: small;
   background-color: white;
   border-color: #b5d1cc;
 }
@@ -71,7 +71,7 @@ a {
   margin-left: auto;
   margin-right: auto;
   margin-top: 2rem;
-  margin-bottom: 2rem;
+  margin-bottom: .8rem;
 }
 #recipe-details-btns {
   display: flex;
@@ -82,4 +82,69 @@ a {
 #recipe-details-main {
   width: 80%;
 }
+.recipe-details-foot {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-bottom: 2rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+
+}
+.link-edit-delete {
+  text-decoration: none;
+  color:#c2c2c2;
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+.user-profile-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 1rem;
+}
+.user-bio-text {
+  margin-top: 1rem;
+  margin-left: 2rem;
+  margin-right: 2rem;
+}
+.user-profile-post-img {
+  max-width: 40%;
+  border-radius: 3%;
+}
+.user-profile-img{
+  max-width: 70px;
+  margin-right: 0.5rem;
+  border-radius: 50%;
+}
+.user-profile-recipe {
+  display: flex;
+  flex-direction: row;
+}
+.user-profile-heading {
+  color:#c2c2c2;
+}
+.user-profile-posts-heading {
+  color: #ebd999;
+}
+.user-profile-text{
+  margin-right: 2rem;
+  color: #6f6f6f;
+}
+
+.favorites-btns {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.favorites-text {
+    display: flex;
+    flex-direction: row;
+}
+.favorites-food-img {
+    max-width: 40%;
+    border-radius: 3%;
+}
+
 /*# sourceMappingURL=style.css.map */
