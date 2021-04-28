@@ -4,7 +4,10 @@ const Recipe = require('../models/Recipe.model');
 const Favorite = require('../models/Favorite.model');
 const fileUpload = require('../configs/cloudinary');
 const User = require('../models/User.model');
-
+const Like = require('../models/Like.model');
+const {
+  find
+} = require('../models/Recipe.model');
 //go to user profile 
 
 router.get('/recipe-details/:recipeId', async (req, res) => {
@@ -57,9 +60,9 @@ router.post('/add-recipe', fileUpload.single('image'), async (req, res) => {
 router.get('/edit-recipe/:recipeId', async (req, res) => {
   try {
     const recipe = await Recipe.findById(req.params.recipeId);
-    console.log(recipe);
     const currentUserId = req.session.currentUser._id;
     const user = await User.findById(currentUserId);
+    console.log(recipe);
     res.render('edit-recipe', {
       recipe,
       user
@@ -70,12 +73,6 @@ router.get('/edit-recipe/:recipeId', async (req, res) => {
   }
 });
 
-// router.get('/edit-recipe/:recipeId', async (req, res) => {
-//   const recipe = Recipe.findById(req.params.recipeId);
-//   res.render('edit-recipe', {
-//     recipe
-//   });
-// });
 
 // router.get('/edit-recipe/:recipeId', async (req, res) => {
 //   try {
@@ -209,14 +206,28 @@ router.post('/profile/edit/:userId', fileUpload.single('image'), async (req, res
 // LIKING RECIPE 
 router.post("/recipe/:recipeId/like", async (req, res) => {
   try {
-    const {
-      likes
-    } = req.body;
-    await Recipe.findByIdAndUpdate(req.params.recipeId, {
-      $inc: {
-        'likes': 1
-      }
+    const user = await User.findById(req.session.currentUser._id);
+    const recipe = await Recipe.findById(req.params.recipeId);
+
+    const existingLike = await Like.findOne({
+      user: user,
+      recipe: recipe
     });
+
+    if (!existingLike) {
+      const like = await Like.create({
+        user,
+        recipe
+      });
+      await Recipe.findByIdAndUpdate(recipe._id, {
+        $push: {
+          like: like
+        }
+      })
+    } else {
+      //Delete like
+    }
+
     res.redirect('/');
   } catch (e) {
     res.render('error');

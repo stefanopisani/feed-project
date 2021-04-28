@@ -6,6 +6,9 @@ body {
 a {
   color: #9db7c2; }
 
+.page-top {
+  margin-bottom: 4.5rem; }
+
 .card-template {
   display: flex;
   flex-direction: column;

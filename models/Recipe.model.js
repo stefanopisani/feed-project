@@ -10,13 +10,16 @@ const recipeSchema = new Schema({
   ingredients: String,
   difficulty: Number,
   time: String,
-  likes: Number,
   user: //String,
   {
     type: Schema.Types.ObjectId,
     ref: 'User' // relates to the Author model
   },
   imageUrl: String,
+  like: [{
+    type: Schema.Types.ObjectId,
+    ref: 'Like' // relates to the Author model
+  }]
 }, {
   timestamps: true
 });
