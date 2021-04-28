@@ -7,7 +7,7 @@ a {
   color: #9db7c2; }
 
 .page-top {
-  margin-bottom: 4.5rem; }
+  margin-bottom: 3rem; }
 
 .card-template {
   display: flex;
@@ -66,6 +66,24 @@ a {
 
 #recipe-details-main {
   width: 80%; }
+
+.user {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly; }
+
+.navbar {
+  border-bottom: 2px solid #9fc2b2; }
+
+.searchbar {
+  margin-left: 60px; }
+
+.forms {
+  margin-top: 50px;
+  padding: 20px 70px; }
+
+.button {
+  margin: 20px 30px; }
 
 /*# sourceMappingURL=style.css.map */
 

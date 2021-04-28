@@ -1,6 +1,6 @@
-<h2>{{user.username}}</h2>
-<img src="{{user.imageUrl}}" alt="" style="height: 100px; width:100px;">
-<p> {{user.bio}} </p>
+<h2>{{userDetail.username}}</h2>
+<img src="{{userDetail.imageUrl}}" alt="" style="height: 100px; width:100px;">
+<p> {{userDetail.bio}} </p>
 <hr>
 
 <h3> List of posts</h3>
@@ -12,12 +12,10 @@
 <hr>
 {{/each}}
 
-<p> a. {{user.username}} </p>
-<p> b. {{currentUser.username}} </p>
 
-{{#eq user.username currentUser.username}}
-<a href="/profile/edit/{{user.id}}"> Edit your profile </a>
+{{#if canEditProfile}}
+<a href="/profile/edit/{{userDetail.id}}"> Edit your profile </a>
 {{else}}
 <p> hello </p>
-{{/eq}}
+{{/if}}
 

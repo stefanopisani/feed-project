@@ -1,4 +1,4 @@
-<h2>Signup</h2>
+{{!-- <h2>Signup</h2>
 <hr>
 <form action="/signup" method="POST" enctype="multipart/form-data">
   <div class="signup-input">
@@ -27,4 +27,58 @@
 {{#if errorMessage}}
 <p>{{errorMessage}}</p>
 {{/if}}
-<a href="/">Go Back</a>
+<a href="/">Go Back</a> --}}
+
+{{!-- ---------------- --}}
+
+<div class="container">
+
+<div class="row">
+<div class="col-md-3">
+</div>
+
+<div class="col-md-6">
+
+<form class="card-template forms" action="/signup" method="POST" enctype="multipart/form-data">
+  
+  <div class="form-group">
+    <label class="form-label">Username</label>
+    <input type="text" name= "username" class="form-control mb-2" placeholder="Enter Username" required>
+  </div>
+
+  <div class="form-group">
+    <label class="form-label">Bio (optional)</label>
+    <input type="text" name= "bio" class="form-control mb-2" placeholder="Something about you">
+  </div>
+
+  <div class="form-group">
+    <label class="form-label">Email</label>
+    <input type="email" name= "email" class="form-control mb-2" placeholder="Enter email" required>
+  </div>
+
+  <div class="form-group">
+    <label class="form-label">Password</label>
+    <input type="password" name="password" class="form-control mb-2" placeholder="Password" required>
+  </div>
+
+<div class="form-group">
+  <label class="form-label"> Profile Picture </label>
+  <input type="file" name="image" class="form-control mb-2" required>
+</div>
+  
+
+  <button type="submit" class="btn btn-outline-success button">Create Account</button>
+
+{{#if errorMessage}}
+<p>{{errorMessage}}</p>
+{{/if}}
+
+</form>
+
+</div>
+
+  <div class="col-md-3">
+  </div>
+
+</div>
+</div>
