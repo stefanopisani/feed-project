@@ -15,13 +15,15 @@
 {{/if}}
           </section>
           <p class="user-bio-text d-flex justify-content-center"> {{userDetail.bio}} </p>
-<hr> {{!-- merge tomorrow --}}
+            <hr> {{!-- merge tomorrow --}}
 
           <h4 class="user-profile-posts-heading" > Posts </h4>
-          
           <br>
+
             {{#each recipes}}
+              <section class="user-profile-stuff">
           <h5 class="user-profile-heading"> {{title}} </h5>
+
             <section class="user-profile-recipe">
               {{!-- <article class="user-profile-text">
               <p>{{description}}</p>
@@ -31,6 +33,19 @@
               </article>
             </section>
                 <hr>
+            {{/each}}
+
+
+            {{!-- <article class="user-profile-text">
+              <p>{{description}}</p>
+            </article> --}}
+            {{!-- <article class="user-profile-post-img-parent"> --}}
+              <a href="/recipe-details/{{id}}"> 
+              <img src="{{imageUrl}}" class="user-profile-post-img img-fluid"
+                  alt="Responsive image">
+                  </a>
+            {{!-- </article> --}}
+          </section>
             {{/each}}
 
         </section>
