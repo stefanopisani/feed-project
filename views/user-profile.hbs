@@ -29,10 +29,17 @@
           </section>
             {{/each}}
 
+<<<<<<< HEAD
         {{#if canEditProfile}}
         <a href="/profile/edit/{{userDetail.id}}" class="user-bio-text-a"> Edit your profile </a>
         {{else}}
         {{/if}}
+=======
+{{#if canEditProfile}}
+<a href="/profile/edit/{{userDetail.id}}" class="user-bio-text-a"> Edit your profile </a>
+<a href="/favorites" class="user-bio-text-a"> My Favorites </a>
+{{/if}}
+>>>>>>> ccd2f46017c412320199c6a8f64236390bd85263
         </section>
       </div>
     <div class="col"></div>
