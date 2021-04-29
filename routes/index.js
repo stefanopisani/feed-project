@@ -27,7 +27,8 @@ router.get('/', async (req, res) => {
 
 router.get('/random', async (req, res) => {
   let response = await axios.get(`https://api.spoonacular.com/recipes/random?apiKey=${process.env.API_KEY}`);
-  res.render('random-recipe', { 
+  console.log(response.data.recipes);
+  res.render('random-recipe', {
     randRecipe: response.data.recipes
   });
 });

@@ -8,9 +8,9 @@
         <img class="recipe-details-img" src="{{recipe.imageUrl}}" />
         <section class="recipe-details-foot">
           {{#is user._id recipe.user}}
-          <a class="link-edit-delete"href="/edit-recipe/{{recipe.id}}">edit</a>
+          <a class="btn btn-outline-secondary"href="/edit-recipe/{{recipe.id}}"> Edit</a>
           <form action="/delete/{{recipe.id}}" method="POST">
-          <button type="submit" class="link-edit-delete"> Delete </button>
+          <button type="submit" class="btn btn-outline-secondary"> Delete </button>
           </form>
           {{/is}}
         </section>

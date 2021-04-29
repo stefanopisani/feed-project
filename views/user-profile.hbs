@@ -7,7 +7,12 @@
           <section class="user-profile-info">
             <img src="{{userDetail.imageUrl}}" class="user-profile-img" >
             <h3>{{userDetail.username}}</h3>
-
+{{#if canEditProfile}}
+<div class="user-actions d-flex justify-content-between">
+<a href="/profile/edit/{{userDetail.id}}" class="btn btn-outline-secondary mx-1"> Edit profile </a>
+<a href="/favorites" class="btn btn-outline-secondary mx-1"> My Favorites </a>
+</div>
+{{/if}}
           </section>
           <p class="user-bio-text d-flex justify-content-center"> {{userDetail.bio}} </p>
 <hr> {{!-- merge tomorrow --}}
@@ -18,20 +23,16 @@
             {{#each recipes}}
           <h5 class="user-profile-heading"> {{title}} </h5>
             <section class="user-profile-recipe">
-              <article class="user-profile-text">
+              {{!-- <article class="user-profile-text">
               <p>{{description}}</p>
-              </article>
+              </article> --}}
               <article class="user-profile-post-img-parent">
-                <img src="{{imageUrl}}" class="user-profile-post-img img-fluid" alt="Responsive image">
+                <a href="/recipe-details/{{id}}"> <img src="{{imageUrl}}" class="user-profile-post-img img-fluid" alt="Responsive image"> </a>
               </article>
             </section>
-                <br>
+                <hr>
             {{/each}}
 
-{{#if canEditProfile}}
-<a href="/profile/edit/{{userDetail.id}}" class="user-bio-text-a"> Edit your profile </a>
-<a href="/favorites" class="user-bio-text-a"> My Favorites </a>
-{{/if}}
         </section>
       </div>
     <div class="col"></div>
