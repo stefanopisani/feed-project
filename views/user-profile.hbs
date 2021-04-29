@@ -16,7 +16,7 @@
           
           <br>
             {{#each recipes}}
-            <h5 class="user-profile-heading"> {{title}} </h5>
+          <h5 class="user-profile-heading"> {{title}} </h5>
             <section class="user-profile-recipe">
               <article class="user-profile-text">
               <p>{{description}}</p>
@@ -31,7 +31,6 @@
 {{#if canEditProfile}}
 <a href="/profile/edit/{{userDetail.id}}" class="user-bio-text-a"> Edit your profile </a>
 {{else}}
-<p> hello </p>
 {{/if}}
         </section>
       </div>

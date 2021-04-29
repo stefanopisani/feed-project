@@ -1,10 +1,8 @@
-<div class="page-top"> </div>
+<div class="page-top"></div>
 <div class="container">
   <div class="row">
-    <div class="col">
-
-    </div>
-    <div class="col-6" id="recipe-details-main">
+  <div class="col"></div>
+  <div class="col-6" id="recipe-details-main">
       <section class="card-template">
         <h5> {{recipe.title}} </h5>
         <img class="recipe-details-img" src="{{recipe.imageUrl}}" />
@@ -16,7 +14,6 @@
         </section>
         <h6> Ingredients:</h6>
           <p> {{recipe.ingredients}} </p>
-
         <h6> Description: </h6>
           <p> {{recipe.description}} </p>
         <h6> Difficulty: </h6>  
@@ -42,7 +39,7 @@
           <button class="btn btn-outline-secondary" type="submit">add to favorites</button>
         </form>
         {{/if}}
-        <form action="/share" method="POST">
+        <form action="/profile/{{recipe.user}}" method="GET">
           <button class="btn btn-outline-secondary" type="submit">more >></button>
         </form>
       </section>
