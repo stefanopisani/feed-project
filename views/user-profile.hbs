@@ -7,31 +7,32 @@
           <section class="user-profile-info">
             <img src="{{userDetail.imageUrl}}" class="user-profile-img" >
             <h3>{{userDetail.username}}</h3>
-
           </section>
           <p class="user-bio-text d-flex justify-content-center"> {{userDetail.bio}} </p>
-<hr> {{!-- merge tomorrow --}}
+            <hr> {{!-- merge tomorrow --}}
 
           <h4 class="user-profile-posts-heading" > Posts </h4>
-          
           <br>
+
             {{#each recipes}}
+              <section class="user-profile-stuff">
           <h5 class="user-profile-heading"> {{title}} </h5>
-            <section class="user-profile-recipe">
-              <article class="user-profile-text">
+            {{!-- <article class="user-profile-text">
               <p>{{description}}</p>
-              </article>
-              <article class="user-profile-post-img-parent">
-                <img src="{{imageUrl}}" class="user-profile-post-img img-fluid" alt="Responsive image">
-              </article>
-            </section>
-                <br>
+            </article> --}}
+            {{!-- <article class="user-profile-post-img-parent"> --}}
+              <a href="/recipe-details/{{id}}"> 
+              <img src="{{imageUrl}}" class="user-profile-post-img img-fluid"
+                  alt="Responsive image">
+                  </a>
+            {{!-- </article> --}}
+          </section>
             {{/each}}
 
-{{#if canEditProfile}}
-<a href="/profile/edit/{{userDetail.id}}" class="user-bio-text-a"> Edit your profile </a>
-{{else}}
-{{/if}}
+        {{#if canEditProfile}}
+        <a href="/profile/edit/{{userDetail.id}}" class="user-bio-text-a"> Edit your profile </a>
+        {{else}}
+        {{/if}}
         </section>
       </div>
     <div class="col"></div>
