@@ -1,0 +1,20 @@
+<div class="page-top"></div>
+<div class="container">
+  <div class="row">
+  <div class="col"></div>
+  <div class="col-6" id="recipe-details-main">
+      <section class="card-template">
+        <h4> {{randRecipe.0.title}} </h4>
+        <p>by: <a href="{{randRecipe.0.sourceUrl}}">{{randRecipe.0.sourceName}}</a></p>
+        <img src="{{randRecipe.0.image}}" alt=""/>
+        <br>
+        <h6>Instructions</h6>
+          <p>{{randRecipe.0.instructions}}</p>
+        <h6>Time</h6>
+          <p>{{randRecipe.0.readyInMinutes}} minutes</p>
+      </section>
+  </div>
+  <div class="col">
+  </div>
+</div>
+</div>

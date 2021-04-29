@@ -1,7 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Assistant:wght@200&display=swap');
+
 body {
   padding: 50px;
   background-color: #e1ecea;
-  font-size: 1em;
+  font-size: 0.8em;
 }
 
 a {
@@ -20,9 +22,8 @@ p {
   color: #37433d;
 }
 
-h3,
-h4 {
-  font-family: "Moon"
+h3, h4, h5, h6 {
+  font-family: "Assistant";
 }
 
 .page-top {
@@ -58,13 +59,10 @@ h4 {
 
 .recipe-post-img {
   max-width: 100%;
-  height: 400px;
   display: block;
   margin-left: auto;
   margin-right: auto;
   border-radius: 2%;
-  box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
-    rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
 }
 
 .recipe-caption {
@@ -142,14 +140,15 @@ h4 {
 
 .user-bio-text {
   margin-top: 1rem;
-  margin-left: 2rem;
-  margin-right: 2rem;
-  font-size: smaller;
+  margin-left: 7rem;
+  margin-right: 7rem;
+  text-align: center;
+  font-size: small;
   color: #a5a5a5;
 }
 
 .user-bio-text-a {
-  font-size: smaller;
+   font-size: small;
 }
 
 .user-profile-post-img-parent {
@@ -169,7 +168,6 @@ h4 {
   margin-right: 0.5rem;
   margin-bottom: 0.5rem;
   border-radius: 50%;
-
 }
 
 .user-profile-recipe {
@@ -178,12 +176,13 @@ h4 {
 }
 
 .user-profile-heading {
-  font-family: "Moon";
-  color: #c2c2c2;
+  font-family: "Assistant";
+  color:#919191;
 }
 
+
 .user-profile-posts-heading {
-  color: #ebd999;
+  color: #e4c861;
 }
 
 .user-profile-text {
@@ -196,9 +195,10 @@ h4 {
 }
 
 .favorites-btns {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 1rem;
 }
 
 .favorites-text {
@@ -207,8 +207,8 @@ h4 {
 }
 
 .favorites-food-img {
-  max-width: 40%;
-  border-radius: 3%;
+    margin-top: 3rem;
+    border-radius: 3%;
 }
 
 .user {
@@ -222,12 +222,6 @@ h4 {
   // display: flex;
   // justify-content: space-evenly;
 }
-
-// .searchbar {
-//   display: block;
-//   margin-left: auto;
-//   margin-right: auto;
-// }
 
 .button {
   margin: 20px 30px;
