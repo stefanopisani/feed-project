@@ -12,70 +12,58 @@
 </head>
 <body>
 
-<nav class="navbar fixed-top" style="padding: 10px 5px; background-color:hsl(153, 22%, 69%);">
-
-  <div class="container-fluid">
-    <a href="/" class="navbar-brand" style="text-decoration: none; color: rgb(65, 65, 65);"> <img src="/images/logo copia.png" alt="" width="30" height="24" class="d-inline-block align-text-top"> Feed</a>
-    <form class="d-flex" action="/search" method="GET">
-      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" type="text" name="search">
-      <button class="btn btn-outline-success" type="submit">Search</button>
-    </form>
-  </div>
-
-</nav>
-{{!--   
-
 {{#if user}}
 
-<nav class="navbar navbar-light fixed-top logged" style="margin: 50px 0 100px; background-color:hsl(153, 22%, 69%);">
-  
-  
-  <div class="fact">
-    <p> Social media something nice </p>
-  </div>
+<nav class="navbar fixed-top ml-auto mr-auto" style="background-color:#d8f1ed;">
 
-  <div class="user-actions">
-    
+  <div class="container-fluid">
+
+    <a href="/" class="navbar-brand" style="text-decoration: none; color: rgb(65, 65, 65); font-size:1.5rem;"> <img src="/images/logo copia.png" alt="" width="30" height="24" class="d-inline-block align-text-top"> Feed</a>
+    <form class=" searchbar d-flex col-md-4" action="/search" method="GET">
+      <input class="form-control me-2" type="search" placeholder="Search for food" aria-label="Search" type="text" name="search">
+      {{!-- <button class="btn btn-outline-success" type="submit"></button> --}}
+    </form>
+
     <div class="user">
-        <a href="/profile/{{user._id}}"> <img src="{{user.imageUrl}}" alt="" style="height: 50px; width:50px; border-radius:50px;"> </a>
-        <h4> {{user.username}}</h4>
-    
-    </div>
-    
-    <div class="user">
-<form action="/add-recipe" method="GET">
-          <button class="btn btn-outline-success me-2">Add Recipe</button>  
+      <a href="/profile/{{user._id}}"> <img src="{{user.imageUrl}}" alt="" style="height: 40px; width:40px; border-radius:50px; margin-right:10px;"> </a>
+      <form action="/add-recipe" method="GET">
+          <button class="btn btn-outline-success me-2"> + </button>  
         </form>
         <form action="/logout" method="POST">
           <button class="btn btn-outline-success me-2" type="submit"> Logout </button>
         </form>
     </div>
-    
-        
-    
+
+
   </div>
-  
+
 </nav>
 
   
 {{else}}
 
-<nav class="navbar navbar-light fixed-top logged" style="margin: 50px 0 100px; background-color:hsl(153, 22%, 69%);">
-  
-  <div class="fact">
-    <p> Social Media Food App</p>
-  </div>
+<nav class="navbar fixed-top ml-auto mr-auto" style="background-color:#d8f1ed;">
+
+  <div class="container-fluid">
+
+    <a href="/" class="navbar-brand" style="text-decoration: none; color: rgb(65, 65, 65);"> <img src="/images/logo-idea.png" alt="" width="35" height="35" class="">   feed
+    </a>
+    <form class="searchbar d-flex col-md-4" action="/search" method="GET">
+      <input class="form-control me-2" type="search" placeholder="Search for food" aria-label="Search" type="text" name="search">
+      {{!-- <button class="btn btn-outline-success" type="submit"></button> --}}
+    </form>
+
   <div class="buttons">
     <form class="container-fluid justify-content-start">
       <a href="/login" class="btn btn-outline-success me-2" type="button">Login</a>
       <a href="/signup" class="btn btn-outline-success me-2" type="button">Signup</a>
     </form>
+
   </div>
-  
+
 </nav>
 
-{{/if}} --}}
-
+{{/if}}
 
 
   {{{body}}}

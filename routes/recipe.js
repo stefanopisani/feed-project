@@ -117,20 +117,22 @@ router.post('/delete/:recipeId', async (req, res) => {
 // GO TO USER PROFILE FROM LIST OF RECIPEES
 router.get('/profile/:userId', async (req, res) => {
   try {
-    const user = await User.findById(req.params.userId);
+    const userDetail = await User.findById(req.params.userId);
     const recipes = await Recipe.find({
-      user: user
+      user: userDetail
     });
     if (req.session.currentUser) {
       const currentUser = await User.findById(req.session.currentUser._id);
+      const canEditProfile = currentUser._id == req.params.userId
       res.render('user-profile', {
-        user,
+        userDetail,
         recipes,
-        currentUser
+        user: currentUser,
+        canEditProfile
       });
     } else {
       res.render('user-profile', {
-        user,
+        userDetail,
         recipes
       });
     }

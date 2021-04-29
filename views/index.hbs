@@ -7,10 +7,10 @@
 <div class="col-6">
   {{#each recipesFromDB}}
     <section class="card-template">
-      <h5 class="recipe-post-title"> {{title}} </h5>
+      <h4> {{title}} </h4>
       <div class="recipe-post-user">
         <img src="{{user.imageUrl}}" alt="" style="height: 40px; width: 40px; border-radius:50px;"> 
-        <p class="recipe-posted-by">posted by: 
+        <p class="recipe-posted-by"> by 
           <a href="/profile/{{user.id}}">{{user.username}}</a>
         </p>
       </div>

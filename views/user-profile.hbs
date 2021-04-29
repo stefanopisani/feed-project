@@ -1,38 +1,40 @@
+<div class="page-top"></div>
 <div class="container">
   <div class="row">
       <div class="col"> </div>
       <div class="col-6" id="recipe-details-main">
         <section class="card-template">
           <section class="user-profile-info">
-            <img src="{{user.imageUrl}}" class="user-profile-img">
-            <h3>{{user.username}}</h3>
-          </section>
-          <p class="user-bio-text"> {{user.bio}} </p>
-          <hr>
+            <img src="{{userDetail.imageUrl}}" class="user-profile-img" >
+            <h3>{{userDetail.username}}</h3>
 
-          <h3 class="user-profile-posts-heading" > posts </h3>
+          </section>
+          <p class="user-bio-text"> {{userDetail.bio}} </p>
+<hr> {{!-- merge tomorrow --}}
+
+          <h4 class="user-profile-posts-heading" > Posts </h4>
           
           <br>
             {{#each recipes}}
             <h5 class="user-profile-heading"> {{title}} </h5>
             <section class="user-profile-recipe">
               <article class="user-profile-text">
-              <p>description: {{description}}</p>
-              <p>ingredients: {{ingredients}}</p>
+              <p>{{description}}</p>
               </article>
-                <img src="{{imageUrl}}" class="user-profile-post-img">
+              <article class="user-profile-post-img-parent">
+                <img src="{{imageUrl}}" class="user-profile-post-img img-fluid" alt="Responsive image">
+              </article>
             </section>
                 <br>
             {{/each}}
 
-          {{#eq user.username currentUser.username}}
-          <a href="/profile/edit/{{user.id}}"> Edit your profile </a>
-          {{else}}
-          {{/eq}}
+{{#if canEditProfile}}
+<a href="/profile/edit/{{userDetail.id}}" class="user-bio-text-a"> Edit your profile </a>
+{{else}}
+<p> hello </p>
+{{/if}}
         </section>
       </div>
     <div class="col"></div>
   </div>
 </div>
-
-

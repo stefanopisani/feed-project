@@ -1,11 +1,27 @@
 body {
   padding: 50px;
-  font: 12px "Neue Helvetica", Helvetica, Arial, sans-serif;
-  background-color: #d8f1ed;
+  background-color: #e1ecea;
+  font-size: 1em;
 }
 
 a {
   color: #9db7c2;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #fa9442;
+}
+
+p {
+  font-family:  "Brandon Grotesque"
+  Arial,
+  sans-serif;
+  color: #37433d;
+}
+
+h3, h4 {
+  font-family: "Moon"
 }
 
 .page-top {
@@ -20,6 +36,8 @@ a {
   margin-bottom: 2rem;
   border-radius: 1rem;
   background-color: #ffffff;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px,
+  rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
 }
 
 .recipe-post-title {
@@ -30,6 +48,7 @@ a {
   display: flex;
   flex-direction: row;
   margin-bottom: 1rem;
+  margin-top: 1rem;
 }
 
 .recipe-posted-by {
@@ -41,10 +60,14 @@ a {
   display: block;
   margin-left: auto;
   margin-right: auto;
+  border-radius: 2%;
+box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
+rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
 }
 
 .recipe-caption {
-  margin-top: 1rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
 }
 
 .recipe-post-btn {
@@ -55,8 +78,14 @@ a {
 
 .btn-outline-secondary {
   font-size: small;
-  background-color: white;
-  border-color: #b5d1cc;
+  background-color:#ffffff;
+  border-color: #e3e3e3;
+
+}
+.btn-outline-secondary:hover{
+  background-color: #ebd999;
+  border-color: #ffffff;
+  color:#63747b;
 }
 
 .col-6 {
@@ -73,6 +102,7 @@ a {
   margin-top: 2rem;
   margin-bottom: .8rem;
 }
+
 #recipe-details-btns {
   display: flex;
   flex-direction: row;
@@ -107,29 +137,47 @@ a {
   margin-top: 1rem;
   margin-left: 2rem;
   margin-right: 2rem;
+  font-size: smaller;
+  color: #a5a5a5;
+}
+
+.user-bio-text-a {
+   font-size: smaller;
+}
+.user-profile-post-img-parent{
+  width: auto;
 }
 .user-profile-post-img {
-  max-width: 40%;
+  max-width: 100%;
+  height: auto;
   border-radius: 3%;
+  margin-top: 1rem;
 }
 .user-profile-img{
   max-width: 70px;
   margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
   border-radius: 50%;
+  
 }
 .user-profile-recipe {
   display: flex;
   flex-direction: row;
 }
 .user-profile-heading {
+  font-family: "Moon";
   color:#c2c2c2;
 }
 .user-profile-posts-heading {
   color: #ebd999;
 }
 .user-profile-text{
-  margin-right: 2rem;
+  margin-right: 3rem;
+  margin-top: 1rem;
+  text-align: justify;
   color: #6f6f6f;
+  max-width: 50%;
+  font-size:smaller;
 }
 
 .favorites-btns {
@@ -146,5 +194,26 @@ a {
     max-width: 40%;
     border-radius: 3%;
 }
+.user {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+.navbar {
+  border-bottom: 2px solid #9fc2b2;
+  display: flex;
+  justify-content: space-evenly;
+}
+.searchbar {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
 
-/*# sourceMappingURL=style.css.map */
+.button {
+  margin: 20px 30px;
+}
+.forms {
+  margin-top: 50px;
+  padding: 20px 70px;
+}
