@@ -15,7 +15,10 @@ p {
   font-family: "Brandon Grotesque" Arial, sans-serif;
   color: #37433d; }
 
-h3, h4, h5, h6 {
+h3,
+h4,
+h5,
+h6 {
   font-family: "Assistant"; }
 
 #nav-logo-text {
