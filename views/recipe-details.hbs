@@ -11,7 +11,9 @@
         <section class="recipe-details-foot">
           {{#is user._id recipe.user}}
           <a class="link-edit-delete"href="/edit-recipe/{{recipe.id}}">edit</a>
-          <a class="link-edit-delete" href="/delete/{{recipe.id}}">delete</a>
+          <form action="/delete/{{recipe.id}}" method="POST">
+          <button type="submit" class="link-edit-delete"> Delete </button>
+          </form>
           {{/is}}
         </section>
         <h6> Ingredients:</h6>

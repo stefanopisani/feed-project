@@ -1,6 +1,45 @@
-<h1>Results</h1> 
+<div class="page-top"> 
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col">
+    </div>
+<div class="col-6">
+  {{#each results}}
+    <section class="card-template">
+      <h4> {{title}} </h4>
+      <div class="recipe-post-user">
+        <img src="{{user.imageUrl}}" alt="" style="height: 40px; width: 40px; border-radius:50px;"> 
+        <p class="recipe-posted-by"> by 
+          <a href="/profile/{{user.id}}">{{user.username}}</a>
+        </p>
+      </div>
+    
+    <div clas="recipe-description">
+      <img class="recipe-post-img" src="{{imageUrl}}" alt="" >
+      <p class="recipe-caption">{{description}}</p>
+    </div>
+    <div class="recipe-post-btn">
+      <form action="/recipe-details/{{id}}" method="GET">
+          <button class="btn btn-outline-secondary" type="submit">Recipe Details</button>
+      </form>
+    {{#if ../user}}
+      <form action="/recipe/{{id}}/like" method="POST">
+        <button class="btn btn-outline-secondary" type="submit"> ❤️  {{like.length}}</button>
+      </form>
+    {{/if}}
+    </div>
+    </section>
+  {{/each}} 
+  </div>
+    <div class="col">
+    </div>
+  </div>
+</div>
+<br>
 
-{{#each results}}
+
+{{!-- {{#each results}}
 <div class="recipe-post">
 
   <h2> <a href="/profile/{{user.id}}">{{user.username}}</a> </h2>
@@ -29,4 +68,4 @@
 {{/each}}
 
 
-  
+   --}}

@@ -24,7 +24,9 @@ router.get('/recipe-details/:recipeId', async (req, res) => {
 });
 
 router.get('/add-recipe', async (req, res) => {
-  res.render('add-recipe');
+  res.render('add-recipe', {
+    user: req.session.currentUser
+  });
 });
 
 router.post('/add-recipe', fileUpload.single('image'), async (req, res) => {
@@ -88,17 +90,26 @@ router.get('/edit-recipe/:recipeId', async (req, res) => {
 
 router.post('/edit-recipe/:recipeId', fileUpload.single('image'), async (req, res) => {
   try {
-    const fileOnCloudinary = req.file.path; // file path (url) on cloudinary
+
+    // const fileOnCloudinary = req.file.path; // file path (url) on cloudinary
     const recipeId = req.params.recipeId;
     const {
       title,
       description
     } = req.body;
-    await Recipe.findByIdAndUpdate(recipeId, {
-      title,
-      description,
-      imageUrl: fileOnCloudinary
-    });
+
+    if (req.file) {
+      await Recipe.findByIdAndUpdate(recipeId, {
+        title,
+        description,
+        imageUrl: req.file.path
+      });
+    } else {
+      await Recipe.findByIdAndUpdate(recipeId, {
+        title,
+        description
+      });
+    }
     res.redirect('/');
   } catch (e) {
     res.render('error');
@@ -150,7 +161,8 @@ router.get('/search', async (req, res) => {
     console.log('keyword', search);
     const results = await Recipe.find({
       title: {
-        $regex: '.*' + search + '.*'
+        $regex: '.*' + search + '.*',
+        $options: 'i'
       }
     }).populate('user');
     console.log('results', results);
@@ -261,7 +273,8 @@ router.get('/favorites', async (req, res) => {
     }).populate('recipe');
     console.log(favorites);
     res.render('favorites', {
-      favorites
+      favorites,
+      user: req.session.currentUser
     });
   } catch (e) {
     res.render('error');
@@ -275,7 +288,6 @@ router.post('/delete-favorite/:recipeId', async (req, res) => {
   const toDel = await Favorite.findByIdAndRemove(req.params.recipeId);
   res.redirect('/favorites');
 });
-
 
 // --------
 

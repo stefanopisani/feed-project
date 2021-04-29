@@ -14,13 +14,13 @@
 
 {{#if user}}
 
-<nav class="navbar fixed-top ml-auto mr-auto" style="background-color:#d8f1ed;">
+<nav class="navbar fixed-top ml-auto mr-auto" style="background-color:#e1ecea;">
 
   <div class="container-fluid">
 
-    <a href="/" class="navbar-brand" style="text-decoration: none; color: rgb(65, 65, 65); font-size:1.5rem;"> <img src="/images/logo copia.png" alt="" width="30" height="24" class="d-inline-block align-text-top"> Feed</a>
+    <a href="/" class="navbar-brand" style="text-decoration: none; color: rgb(65, 65, 65); font-size:1.5rem;"> <img src="/images/logo-idea.png" alt="" width="30" height="24" class="d-inline-block align-text-top"> Feed</a>
     <form class=" searchbar d-flex col-md-4" action="/search" method="GET">
-      <input class="form-control me-2" type="search" placeholder="Search for food" aria-label="Search" type="text" name="search">
+      <input class="form-control" type="search" placeholder="Search for food" aria-label="Search" type="text" name="search">
       {{!-- <button class="btn btn-outline-success" type="submit"></button> --}}
     </form>
 
@@ -42,14 +42,15 @@
   
 {{else}}
 
-<nav class="navbar fixed-top ml-auto mr-auto" style="background-color:#d8f1ed;">
+<nav class="navbar fixed-top ml-auto mr-auto" style="background-color:#e1ecea;">
 
   <div class="container-fluid">
 
     <a href="/" class="navbar-brand" style="text-decoration: none; color: rgb(65, 65, 65);"> <img src="/images/logo-idea.png" alt="" width="35" height="35" class="">   feed
     </a>
+
     <form class="searchbar d-flex col-md-4" action="/search" method="GET">
-      <input class="form-control me-2" type="search" placeholder="Search for food" aria-label="Search" type="text" name="search">
+      <input class="form-control" type="search" placeholder="Search for food" aria-label="Search" type="text" name="search">
       {{!-- <button class="btn btn-outline-success" type="submit"></button> --}}
     </form>
 
