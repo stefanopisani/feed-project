@@ -8,7 +8,9 @@ const Like = require('../models/Like.model');
 const {
   find
 } = require('../models/Recipe.model');
-//go to user profile 
+
+
+//go to recipe details 
 
 router.get('/recipe-details/:recipeId', async (req, res) => {
   try {
@@ -29,6 +31,8 @@ router.get('/add-recipe', async (req, res) => {
   });
 });
 
+
+// ADD RECIPE
 router.post('/add-recipe', fileUpload.single('image'), async (req, res) => {
   try {
     const currentUserId = req.session.currentUser._id;
@@ -75,19 +79,6 @@ router.get('/edit-recipe/:recipeId', async (req, res) => {
   }
 });
 
-
-// router.get('/edit-recipe/:recipeId', async (req, res) => {
-//   try {
-//     const recipe = await Recipe.findById(req.params.recipeId);
-//     res.render('edit-recipe', {
-//       recipe
-//     });
-//   } catch (e) {
-//     res.render('error');
-//     console.log(`An error occurred ${e}`);
-//   }
-// });
-
 router.post('/edit-recipe/:recipeId', fileUpload.single('image'), async (req, res) => {
   try {
 
@@ -125,13 +116,17 @@ router.post('/delete/:recipeId', async (req, res) => {
   //maybe we should soft delete??
 });
 
-// GO TO USER PROFILE FROM LIST OF RECIPEES
+// GO TO USER PROFILE
 router.get('/profile/:userId', async (req, res) => {
   try {
     const userDetail = await User.findById(req.params.userId);
     const recipes = await Recipe.find({
       user: userDetail
-    });
+    }, null, {
+      sort: {
+        createdAt: -1
+      }
+    })
     if (req.session.currentUser) {
       const currentUser = await User.findById(req.session.currentUser._id);
       const canEditProfile = currentUser._id == req.params.userId
@@ -270,6 +265,10 @@ router.get('/favorites', async (req, res) => {
   try {
     let favorites = await Favorite.find({
       user: req.session.currentUser._id
+    }, null, {
+      sort: {
+        createdAt: -1
+      }
     }).populate('recipe');
     console.log(favorites);
     res.render('favorites', {

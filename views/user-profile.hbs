@@ -8,8 +8,11 @@
             <img src="{{userDetail.imageUrl}}" class="user-profile-img" >
             <h3>{{userDetail.username}}</h3>
             {{#if canEditProfile}}
-            <a href="/profile/edit/{{userDetail.id}}" class="user-bio-text-a"> Edit your profile </a>
-            <a href="/favorites" class="user-bio-text-a"> My Favorites </a>
+            <div class="user-buttons d-flex justify-content-between">
+            <a href="/profile/edit/{{userDetail.id}}" class="btn btn-outline-secondary mx-1"> Edit your profile </a>
+            <a href="/favorites" class="btn btn-outline-secondary mx-1"> My Favorites </a>
+            </div>
+            
             {{/if}}
           </section>
           <p class="user-bio-text d-flex justify-content-center"> {{userDetail.bio}} </p>

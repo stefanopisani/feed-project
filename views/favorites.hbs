@@ -5,20 +5,18 @@
     <div class="col-6">
       <section class="card-template">
           <h4> Favorites </h4>
-          <hr>
-        <section class="favorites-info">
-            {{#each favorites}}
-            <h4> {{recipe.title}} </h4>
-
-<section class="user-profile-recipe">
-  <article class="user-profile-text">
-    <h6> Description </h6>
-    <p> {{recipe.description}}</p>
-  </article>
-  <article class="user-profile-post-img-parent">
-    <img src="{{recipe.imageUrl}}" class=".favorites-food-img user-profile-post-img img-fluid" alt="Responsive image">
-  </article>
-</section>
+<section class="favorites-info">
+    {{#each favorites}}
+    <hr>
+    <h4> {{recipe.title}} </h4>
+  <section class="favorites-description">
+    <section class="favorites-text">
+      <p> {{recipe.description}}</p>
+    </section>
+      <section class="user-profile-post-img-parent">
+        <img src="{{recipe.imageUrl}}" class="favorites-food-img img-fluid" alt="Responsive image">
+      </section>
+  </section>
         <section class="favorites-btns">
         <form action="/recipe-details/{{recipe.id}}" method="GET">
           <button class="btn btn-outline-secondary" type="submit">Recipe Details</button>
@@ -27,7 +25,6 @@
           <button class="btn btn-outline-secondary" type="submit"> Delete </button>
         </form>
       </section>
-                    <hr>
             {{/each}}
           </section>
     </section>

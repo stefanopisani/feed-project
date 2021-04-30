@@ -29,7 +29,17 @@ router.get('/random', async (req, res) => {
   let response = await axios.get(`https://api.spoonacular.com/recipes/random?apiKey=${process.env.API_KEY}`);
   console.log(response.data.recipes);
   res.render('random-recipe', {
-    randRecipe: response.data.recipes
+    randRecipe: response.data.recipes,
+    user: req.session.currentUser
+  });
+});
+
+router.get('/trivia', async (req, res) => {
+  let response = await axios.get(`https://api.spoonacular.com/food/trivia/random?apiKey=${process.env.API_KEY}`);
+  console.log(response)
+  res.render('trivia', {
+    trivia: response.data.text,
+    user: req.session.currentUser
   });
 });
 
